@@ -1,6 +1,6 @@
-import time
 import random
 import string
+import time
 
 # Fungsi untuk menghasilkan password acak
 def generate_random_password(length=10):
@@ -14,23 +14,22 @@ def generate_random_email():
     random_domain = random.choice(domains)
     return f"{random_username}@{random_domain}"
 
-# Fungsi utama untuk menampilkan "code" selama 5 detik
-def display_code_and_change():
-    # Tampilkan code selama 5 detik
-    print("[*] Generating code... (Hold on!)")
-    start_time = time.time()
-    while time.time() - start_time < 5:
-        print("Code running... ████████████", end="\r")
-        time.sleep(0.1)  # Update setiap 0.1 detik
-    
-    # Setelah 5 detik, tampilkan email dan password acak
-    print("\n[*] Generating random email and password...")
-    email = generate_random_email()
-    password = generate_random_password()
+# Fungsi untuk menampilkan akun secara terus-menerus di terminal dengan gaya
+def display_accounts():
+    while True:
+        # Generate random email and password
+        email = generate_random_email()
+        password = generate_random_password()
 
-    print(f"Email: {email}")
-    print(f"Password: {password}")
+        # Tampilkan akun dengan format yang diinginkan dan warna hijau
+        print("\033[32m" + "╔━━[ DATA AKUN ]")
+        print(f"┃ *[ ♙ ] Email : {email}")
+        print(f"┃ *[ ⚿ ] Password : {password}")
+        print("╚━━━━━━━━━━━━━❐" + "\033[0m")
+        
+        # Tunggu sejenak sebelum menampilkan akun berikutnya
+        time.sleep(0.5)
 
 # Jalankan fungsi utama
 if __name__ == "__main__":
-    display_code_and_change()
+    display_accounts()
